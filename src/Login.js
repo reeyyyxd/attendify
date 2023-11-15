@@ -45,7 +45,11 @@ export default function Login() {
       </Link>
         </form>
       </div>
-
+      <footer>
+      <Link to="/indexStudent" className="text-black hover:underline">
+       to front page
+      </Link>
+      </footer>
       
     </div>
   );
