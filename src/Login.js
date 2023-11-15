@@ -42,10 +42,12 @@ export default function Login() {
           <br/>
           <br/>
 
-          <a href="#" className="text-black hover:underline">
-            Forgot Password?
-            <br/>
-          </a>
+          <button className="text-black hover:underline" onClick={() => {}}>
+             Forgot Password?
+         
+          </button>
+
+          <br/>
 
           <Link to="/register" className="text-black hover:underline">
           <span style={{ textDecoration: 'underline' }}>No account yet? Register</span>

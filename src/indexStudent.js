@@ -38,10 +38,10 @@ export default function IndexStudent() {
         <img className="h-12" src={logoImg} alt="logo" />
 
         <div className="flex items-center">
-          <Button variant="contained" onClick={openSignupModal} sx={{ ml: 'auto' }}>
+          <Button variant="contained" onClick={openSignupModal} sx={{ ml: 'auto',bgcolor: '#052e2e' }}>
             Create Event
           </Button>
-          <Button variant="contained" sx={{ ml: 2 }}>
+          <Button variant="contained" sx={{ ml: 2, bgcolor: '#052e2e'}}>
             Log Out
           </Button>
         </div>
@@ -119,7 +119,7 @@ export default function IndexStudent() {
           <TextField label="Details" id="lpassword" type="password" variant="outlined" margin="normal" fullWidth />
 
          
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
             <Button variant="contained" >
               Create Event
             </Button>
