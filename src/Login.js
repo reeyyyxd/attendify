@@ -1,4 +1,5 @@
 import React from "react";
+import TextField from '@mui/material/TextField';  
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
@@ -14,16 +15,21 @@ export default function Login() {
           <h2 className="text-3xl dark:text-black font-bold text-center">
             Sign In
           </h2>
+          <br/>
 
-          <input
+        
+          <TextField id="outlined-basic" label="ID Number" variant="outlined" 
             type="text"
-            placeholder="User Name"
+        
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+            
           />
+          <br/>
+             <br/>
 
-          <input
+          <TextField id="outlined-basic" label="Password" variant="outlined" 
             type="password"
-            placeholder="Password"
+  
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
           />
 
@@ -33,18 +39,22 @@ export default function Login() {
           >
             Log In
           </button>
+          <br/>
+          <br/>
 
           <a href="#" className="text-black hover:underline">
             Forgot Password?
             <br/>
           </a>
 
-        
           <Link to="/register" className="text-black hover:underline">
-       No account yet? Register
-      </Link>
+          <span style={{ textDecoration: 'underline' }}>No account yet? Register</span>
+          </Link>
+
         </form>
       </div>
+
+      
       <footer>
       <Link to="/indexStudent" className="text-black hover:underline">
        to front page
