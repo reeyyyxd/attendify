@@ -1,10 +1,11 @@
+// App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import IndexStudent from "./indexStudent";
 
-export default function App() {
+ function App() {
   return (
     <Router>
       <Switch>
@@ -15,3 +16,4 @@ export default function App() {
     </Router>
   );
 }
+export default App;

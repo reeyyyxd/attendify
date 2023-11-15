@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
-export default function Register() {
+function Register() {
   return (
     <div className="h-screen w-full bg-orange-100 ">
           <nav className="bg-teal-950">
@@ -46,4 +46,4 @@ export default function Register() {
     </div>
   );
 }
-
+export default App;
