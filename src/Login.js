@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
- function Login() {
+export default function Login() {
   return (
     <div className="h-screen w-full bg-orange-100 ">
       <nav className="bg-teal-950">
@@ -36,14 +36,17 @@ import logoImg from "./assets/logo.png";
 
           <a href="#" className="text-black hover:underline">
             Forgot Password?
+            <br/>
           </a>
+
+        
+          <Link to="/register" className="text-black hover:underline">
+       No account yet? Register
+      </Link>
         </form>
       </div>
 
-      <Link to="/register" className="text-black hover:underline">
-        Register
-      </Link>
+      
     </div>
   );
 }
-export default App;

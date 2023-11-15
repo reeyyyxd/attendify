@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
-function IndexStudent() {
+export default function IndexStudent() {
   return (
     <div className="h-screen w-full bg-orange-100 ">
       {/* ... your existing code ... */}
@@ -15,4 +15,3 @@ function IndexStudent() {
     </div>
   );
 }
-export default App;
