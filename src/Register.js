@@ -32,7 +32,7 @@ export default function Register() {
             variant="outlined"
             className="w-full p-3 mt-4"
           />
-              <br/>
+            <br/>
             <br/>
 
           <TextField
@@ -51,7 +51,7 @@ export default function Register() {
             variant="outlined"
             className="w-full p-3 mt-4"
           />
-              <br/>
+            <br/>
             <br/>
 
 
@@ -62,7 +62,7 @@ export default function Register() {
             variant="outlined"
             className="w-full p-3 mt-4"
           />
-              <br/>
+            <br/>
             <br/>
 
           <button
@@ -71,7 +71,8 @@ export default function Register() {
           >
             Register
           </button>
-          <br/>
+          
+            <br/>
             <br/>
 
 

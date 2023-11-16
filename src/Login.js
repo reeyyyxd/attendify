@@ -20,16 +20,14 @@ export default function Login() {
         
           <TextField id="outlined-basic" label="ID Number" variant="outlined" 
             type="text"
-        
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
             
           />
           <br/>
-             <br/>
+          <br/>
 
           <TextField id="outlined-basic" label="Password" variant="outlined" 
             type="password"
-  
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
           />
 
@@ -44,9 +42,7 @@ export default function Login() {
 
           <button className="text-black hover:underline" onClick={() => {}}>
              Forgot Password?
-         
           </button>
-
           <br/>
 
           <Link to="/register" className="text-black hover:underline">
