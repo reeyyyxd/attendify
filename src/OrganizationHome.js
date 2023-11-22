@@ -23,7 +23,7 @@ const departments = [
   { label: 'CNAHS'},
 ];
 
-export default function IndexStudent() {
+export default function OrganizationHome() {
   const navigate = useNavigate();
   const [isSignupModalOpen, setSignupModalOpen] = useState(false);
   const [isYearModalOpen, setYearModalOpen] = useState(false);
@@ -99,7 +99,7 @@ export default function IndexStudent() {
 
 
   return (
-    <div className="h-screen w-full bg-orange-100">
+    <div style={{ backgroundColor: '#ffeed6' }} className="w-full">
       <nav className="flex justify-between items-center bg-teal-950 p-4">
         <img className="h-12" src={logoImg} alt="logo" />
 
@@ -145,12 +145,10 @@ export default function IndexStudent() {
           </CardActionArea>
           <CardActions>
             <Button size="small" color="primary" onClick={openYearModal} >
-              Join Event
+              See Event
             </Button>
           </CardActions>
         </Card>
-
-
 
 
         <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
@@ -174,11 +172,85 @@ export default function IndexStudent() {
           </CardActionArea>
           <CardActions>
             <Button size="small" color="primary">
-              Join Event
+              See Event
             </Button>
           </CardActions>
         </Card>
       </div>
+
+
+      <h1 className="text-3xl font-bold text-center mt-4">
+        Events Created
+      </h1>
+      <br/>
+
+      <div className="flex justify-center items-center">
+        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200"
+              width="345"
+              image={event2}
+              alt="Event 1"
+              sx={{ objectFit: 'cover' }}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Christmas Party
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                An awesome party.
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+          <Button size="small" color="primary">
+              View Attendance
+            </Button>
+            <Button size="small" color="primary">
+              Options
+            </Button>
+           
+          </CardActions>
+        </Card>
+
+
+        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="200"
+              width="345"
+              image={event2}
+              alt="Event 2"
+              sx={{ objectFit: 'cover' }}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Another Christmas Party
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Events = more fun (am I right?)
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="primary">
+              View Attendance
+            </Button>
+            <Button size="small" color="primary">
+              Options
+            </Button>
+           
+          </CardActions>
+        </Card>
+      </div>
+
+      
+
+
+
 
 
       <Modal
@@ -248,8 +320,8 @@ export default function IndexStudent() {
         aria-describedby="year-modal-description"
       >
         <Box sx={{ ...yearModalStyle, width: 300 }}>
-          <h2 id="year-modal-title">Join Event</h2>
-          <TextField label="Course and Year" id="year" variant="outlined" margin="normal" fullWidth />
+          <h2 id="year-modal-title">See Event</h2>
+          <TextField label="Name" id="year" variant="outlined" margin="normal" fullWidth />
           <Autocomplete
             disablePortal
             id="combo-box-demo"

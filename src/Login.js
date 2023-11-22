@@ -3,9 +3,10 @@ import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
+
 export default function Login() {
   return (
-    <div className="h-screen w-full bg-orange-100 ">
+    <div style={{ backgroundColor: '#ffeed6' }} className="w-full">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
       </nav>
@@ -62,9 +63,14 @@ export default function Login() {
        to admin
       </Link>
       <br/>
-      <Link to="/sample" className="text-black hover:underline">
+      <Link to="/joined" className="text-black hover:underline">
        to joinedEvent
       </Link>
+      <br/>
+      <Link to="/orgindex" className="text-black hover:underline">
+       to orgindex
+      </Link>
+
 
 
 

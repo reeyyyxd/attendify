@@ -6,6 +6,8 @@ import IndexStudent from "./indexStudent";
 import Adminn from "./Adminn";
 import Adminevents from "./Adminevents";
 import AdminVerification from "./AdminVerification";
+import EventSample from "./eventSample"; 
+import OrganizationHome from "./OrganizationHome";
 
 
 export default function App() {
@@ -18,6 +20,9 @@ export default function App() {
         <Route path="/admin" element={<Adminn />} />
         <Route path="/admineve" element={<Adminevents/>} />
         <Route path="/verification" element={<AdminVerification/>} />
+        <Route path="/joined" element={<EventSample/>} />
+        <Route path="/orgindex" element={<OrganizationHome/>} />
+        
  
       </Routes>
     </Router>
