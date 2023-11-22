@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import IndexStudent from "./indexStudent";
+import Adminn from "./Adminn";
+import Adminevents from "./Adminevents";
 
 export default function App() {
   return (
@@ -11,6 +13,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/indexStudent" element={<IndexStudent />} />
+        <Route path="/admin" element={<Adminn />} />
+        <Route path="/admineve" element={<Adminevents />} />
       </Routes>
     </Router>
   );
