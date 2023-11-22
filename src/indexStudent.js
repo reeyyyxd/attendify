@@ -3,12 +3,28 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Modal, Box, TextField } from '@mui/material';
+import { Button, CardActionArea, CardActions, Modal, Box, TextField, IconButton } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 import event2 from "./assets/event2.jpg";
 import logoImg from "./assets/logo.png";
+import { Link } from "react-router-dom";
+
+const departments = [
+  { label: 'Public'},
+  { label: 'CCS'},
+  { label: 'CASE'},
+  { label: 'CEA'},
+  { label: 'CMBA'},
+  { label: 'CCJ'},
+  { label: 'CNAHS'},
+];
 
 export default function IndexStudent() {
   const [isSignupModalOpen, setSignupModalOpen] = useState(false);
+  const [isYearModalOpen, setYearModalOpen] = useState(false);
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false); 
 
   const openSignupModal = () => {
     setSignupModalOpen(true);
@@ -17,6 +33,26 @@ export default function IndexStudent() {
   const closeSignupModal = () => {
     setSignupModalOpen(false);
   };
+
+  const openYearModal = () => {
+    setYearModalOpen(true);
+  };
+
+  const closeYearModal = () => {
+    setYearModalOpen(false);
+  };
+
+  const handleSnackbarOpen = () => {
+    setSnackbarOpen(true);
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
 
   const style = {
     position: 'absolute',
@@ -32,6 +68,21 @@ export default function IndexStudent() {
     pb: 3,
   };
 
+  const yearModalStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 300,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+  };
+
+
   return (
     <div className="h-screen w-full bg-orange-100">
       <nav className="flex justify-between items-center bg-teal-950 p-4">
@@ -41,9 +92,14 @@ export default function IndexStudent() {
           <Button variant="contained" onClick={openSignupModal} sx={{ ml: 'auto',bgcolor: '#052e2e' }}>
             Create Event
           </Button>
-          <Button variant="contained" sx={{ ml: 2, bgcolor: '#052e2e'}}>
-            Log Out
-          </Button>
+
+
+           <Button variant="contained" sx={{ ml: 2, bgcolor: '#052e2e' }}>
+        <Link to="/login" className="text-white text-decoration-none">
+          Log Out
+        </Link>
+      </Button>
+   
         </div>
       </nav>
 
@@ -73,11 +129,14 @@ export default function IndexStudent() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button size="small" color="primary" onClick={openYearModal} >
               Join Event
             </Button>
           </CardActions>
         </Card>
+
+
+
 
         <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
           <CardActionArea>
@@ -115,9 +174,45 @@ export default function IndexStudent() {
       >
         <Box sx={{ ...style, width: 400 }}>
           <h2 id="signup-modal-title">Create Event</h2>
-          <TextField label="Event Name" id="lusername" variant="outlined" margin="normal" fullWidth />
-          <TextField label="Details" id="lpassword" type="password" variant="outlined" margin="normal" fullWidth />
+          <TextField label="Event Name" id="eventname" variant="outlined" margin="normal" fullWidth />
+          <TextField label="Description" id="desc" type="outlined" variant="outlined" margin="normal" fullWidth />
 
+        
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={departments}
+            sx={{ width: 330 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Department"
+                margin="normal"
+                fullWidth
+              />
+            )}
+          />
+
+          <TextField
+          id="standard-helperText"
+          type="datetime-local"
+          defaultValue=""
+          helperText="Event Start"
+          variant="standard"
+          margin="normal"
+            fullWidth
+        />
+          <br/>
+          
+          <TextField
+          id="standard-helperText"
+          type="datetime-local"
+          defaultValue=""
+          helperText="Event End"
+          variant="standard"
+          margin="normal"
+            fullWidth
+        />
          
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
             <Button variant="contained" >
@@ -129,6 +224,66 @@ export default function IndexStudent() {
           </Box>
         </Box>
       </Modal>
+
+
+      <Modal
+        open={isYearModalOpen}
+        onClose={closeYearModal}
+        aria-labelledby="year-modal-title"
+        aria-describedby="year-modal-description"
+      >
+        <Box sx={{ ...yearModalStyle, width: 300 }}>
+          <h2 id="year-modal-title">Join Event</h2>
+          <TextField label="Course and Year" id="year" variant="outlined" margin="normal" fullWidth />
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={departments}
+            sx={{ width: 235 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Department"
+              
+              />
+            )}
+          />
+
+
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+            <Button variant="contained" onClick={closeYearModal}>
+              Cancel
+            </Button>
+            <Button variant="contained" onClick={() => { openYearModal(); handleSnackbarOpen(); }} sx={{ ml: 1 }}>
+              Confirm
+
+      
+
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
+
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message="Success"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnackbarClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+
+
     </div>
   );
 }

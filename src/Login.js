@@ -57,6 +57,17 @@ export default function Login() {
       <Link to="/indexStudent" className="text-black hover:underline">
        to front page
       </Link>
+      <br/>
+      <Link to="/admin" className="text-black hover:underline">
+       to admin
+      </Link>
+      <br/>
+      <Link to="/sample" className="text-black hover:underline">
+       to joinedEvent
+      </Link>
+
+
+
       </footer>
       
     </div>

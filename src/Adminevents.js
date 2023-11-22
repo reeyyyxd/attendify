@@ -11,18 +11,50 @@ export default function Adminn() {
       </nav>
 
       <div className="w-1/3 ms-8 mt-6">
-        <h1 className="text-black font-bold text-2xl">Manage Events</h1>
-      </div>
+          <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
+        </div>
 
-      <div className="w-80 ms-8 pt-6 ">
-        <input
-          type="search"
-          placeholder="Search here..."
-          className="bg-orange-200 bg-opacity-100 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        />
+        <div className="flex items-center w-full ms-8 pt-6 space-x-4">
+        <div className="flex-grow">
+            <input
+               type="search"
+               placeholder="Search here..."
+               className="bg-orange-200 bg-opacity-100 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+             />
+        </div>
+          <div className="w-1/6">
+            <Link to="/admin" className="text-blue-600 hover:text-blue-700">
+              Users
+            </Link>
+          </div>
+          
+          <div className="w-1/6">
+          <Link to="/admineve" className="text-blue-600 hover:text-blue-700">
+            Event
+          </Link>
+        </div>
+       
+        <div className="w-1/6">
+          <Link to="/verification" className="text-blue-600 hover:text-blue-700">
+            Verification
+          </Link>
+        </div>
+        
+        <div className="w-1/6">
+          {/* Logout Link */}
+          <Link to="/login" className="text-blue-600 hover:text-blue-700">
+            Logout
+          </Link>
+        </div>
       </div>
 
       {/* table */}
+
+
+
+
+
+
 
       <table class="table-auto  mt-6 w-full ">
   <thead>
