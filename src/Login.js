@@ -9,6 +9,7 @@ export default function Login() {
     <div style={{ backgroundColor: '#ffeed6' }} className="w-full">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
+        <a href="/register" className="text-white ml-4 absolute top-5 right-28 h-16 w-16">Sign up</a>
       </nav>
 
       <div className="bg-orange-50 my-52 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">

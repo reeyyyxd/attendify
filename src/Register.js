@@ -8,6 +8,7 @@ export default function Register() {
     <div className="h-screen w-full bg-orange-100 ">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
+        <a href="/login" className="text-white ml-4 absolute top-5 right-28 h-16 w-16">Sign In</a>
       </nav>
 
       <div className="bg-orange-50 my-16 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">

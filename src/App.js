@@ -8,6 +8,9 @@ import Adminevents from "./Adminevents";
 import AdminVerification from "./AdminVerification";
 import EventSample from "./eventSample"; 
 import OrganizationHome from "./OrganizationHome";
+import Selectrole from "./Selectrole";
+import About from "./About";
+import Contact from "./Contact";
 
 
 export default function App() {
@@ -22,6 +25,9 @@ export default function App() {
         <Route path="/verification" element={<AdminVerification/>} />
         <Route path="/joined" element={<EventSample/>} />
         <Route path="/orgindex" element={<OrganizationHome/>} />
+        <Route path="/select" element={<Selectrole/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
         
  
       </Routes>
