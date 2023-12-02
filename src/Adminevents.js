@@ -2,6 +2,10 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
+import { FaUserEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { TbDeviceDesktopAnalytics } from "react-icons/tb";
+import { Button } from "@mui/material";
 
 export default function Adminn() {
   return (
@@ -23,28 +27,39 @@ export default function Adminn() {
              />
         </div>
           <div className="w-1/6">
-            <Link to="/admin" className="text-blue-600 hover:text-blue-700">
-              Users
-            </Link>
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+          <Link to="/admin" className="text-blue-600 hover:text-blue-700">
+            Users
+          </Link>
+          </Button>
           </div>
           
           <div className="w-1/6">
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
           <Link to="/admineve" className="text-blue-600 hover:text-blue-700">
             Event
           </Link>
+          </Button>
         </div>
        
         <div className="w-1/6">
-          <Link to="/verification" className="text-blue-600 hover:text-blue-700">
+        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+          <Link
+            to="/verification"
+            className="text-blue-600 hover:text-blue-700"
+          >
             Verification
           </Link>
+          </Button>
         </div>
         
         <div className="w-1/6">
-          {/* Logout Link */}
+        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+            {/* Logout Link */}
           <Link to="/login" className="text-blue-600 hover:text-blue-700">
             Logout
           </Link>
+          </Button>
         </div>
       </div>
 
@@ -85,10 +100,14 @@ export default function Adminn() {
       <td class="w-3/12 px-6 py-4 whitespace-nowrap">20</td>
       <td class="w-2/12 px-6 py-4 whitespace-nowrap">John Doe</td>
       <td class="w-4/12 px-6 py-4 whitespace-nowrap">
+        <div class="grid-column">
+          <div class="flex items-center space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700"><FaUserEdit size={25}/></a> 
+              <a href="#" className="text-orange-500 hover:text-orange-700"><TbDeviceDesktopAnalytics size={25}/></a> 
+              <a href="#" class="text-red-600 hover:text-red-700"><MdDelete size={25}/></a>
+          </div>
+        </div>
         
-        <a href="#" class="text-blue-600 hover:text-blue-700">Edit</a> |
-        <a href="#" className="text-orange-500 hover:text-orange-700"> Analytics</a> |
-        <a href="#" class="text-red-600 hover:text-red-700"> Delete</a>
       </td>
     </tr>
     <tr class="border-b border-gray-200 hover:bg-gray-100">
@@ -99,9 +118,13 @@ export default function Adminn() {
       <td class="w-3/12 px-6 py-4 whitespace-nowrap">45</td>
       <td class="w-2/12 px-6 py-4 whitespace-nowrap">Doe John</td>
       <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-      <a href="#" class="text-blue-500 hover:text-blue-700">Edit</a> |
-        <a href="#" className="text-orange-500 hover:text-orange-700"> Analytics</a> |
-        <a href="#" class="text-red-500 hover:text-red-700"> Delete</a>
+      <div class="grid-column">
+          <div class="flex items-center space-x-4">
+              <a href="#" class="text-blue-600 hover:text-blue-700"><FaUserEdit size={25}/></a> 
+              <a href="#" className="text-orange-500 hover:text-orange-700"> <TbDeviceDesktopAnalytics size={25}/></a> 
+              <a href="#" class="text-red-600 hover:text-red-700">  <MdDelete size={25}/></a>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

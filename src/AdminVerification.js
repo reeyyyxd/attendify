@@ -2,6 +2,12 @@
   import TextField from "@mui/material/TextField";
   import { Link } from "react-router-dom";
   import logoImg from "./assets/logo.png";
+  import { MdOutlineWork } from "react-icons/md";
+  import { PiStudentFill } from "react-icons/pi";
+  import { IoIosCloseCircle } from "react-icons/io";
+  import { FaUnlock } from "react-icons/fa6";
+  import { Button } from "@mui/material";
+  
 
   export default function AdminVerification() {
     return (
@@ -23,28 +29,39 @@
              />
         </div>
           <div className="w-1/6">
-            <Link to="/admin" className="text-blue-600 hover:text-blue-700">
-              Users
-            </Link>
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+          <Link to="/admin" className="text-blue-600 hover:text-blue-700">
+            Users
+          </Link>
+          </Button>
           </div>
           
           <div className="w-1/6">
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
           <Link to="/admineve" className="text-blue-600 hover:text-blue-700">
             Event
           </Link>
+          </Button>
         </div>
        
         <div className="w-1/6">
-          <Link to="/verification" className="text-blue-600 hover:text-blue-700">
+        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+          <Link
+            to="/verification"
+            className="text-blue-600 hover:text-blue-700"
+          >
             Verification
           </Link>
+          </Button>
         </div>
 
         <div className="w-1/6">
-          {/* Logout Link */}
+        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+            {/* Logout Link */}
           <Link to="/login" className="text-blue-600 hover:text-blue-700">
             Logout
           </Link>
+          </Button>
         </div>
   
       </div>
@@ -57,7 +74,7 @@
 
         {/* table */}
         <h2 className="text-black font-bold text-2xl mt-6 ml-6">Users</h2>
-        <table class="table-auto  mt-6 w-full ">
+        <table class="table-auto mt-6 w-full ">
         <thead>
         <tr class="bg-teal-950"> 
           <th class="w-1/12">
@@ -83,7 +100,7 @@
      <tbody>
           <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="w-1/12">
-              <input type="checkbox" className="mr-4"></input>
+              <input type="checkbox" className="ms-12"></input>
             </td>
             <td className="w-2/12 px-6 py-4 whitespace-nowrap">
               <Link to="/userprofile/1234567890" className="text-blue-600 hover:text-blue-700">
@@ -102,16 +119,21 @@
             </a>
             </td>
             <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-          <a href="#" class="text-blue-600 hover:text-blue-700"> Student</a> |
-          <a href="#" class="text-blue-600 hover:text-blue-700"> Employee</a> |
-          <a href="#" class="text-red-600 hover:text-red-700"> Deny</a>
+              <div class="grid-column">
+                <div class="flex items-center space-x-4">
+                  <a href="#" class="text-blue-400 hover:text-blue-600"> <PiStudentFill size={25}/></a>  {/*student*/}
+                  <a href="#" class="text-lime-500 hover:text-lime-700"> <MdOutlineWork size={25}/></a>   {/*employee*/}
+                  <a href="#" class="text-red-500 hover:text-red-700"> <IoIosCloseCircle size={25}/></a>   {/*deny*/}
+                </div>
+              </div>
+          
         </td>
           </tr>
     </tbody>
     <tbody>
           <tr className="border-b border-gray-200 hover:bg-gray-100">
             <td className="w-1/12">
-              <input type="checkbox" className="mr-4"></input>
+              <input type="checkbox" className="ms-12"></input>
             </td>
             <td className="w-2/12 px-6 py-4 whitespace-nowrap">
               <Link to="/userprofile/1234567890" className="text-blue-600 hover:text-blue-700">
@@ -129,11 +151,14 @@
               See Proof
               </a>
              </td>
-            
            <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-           <a href="#" class="text-blue-600 hover:text-blue-700"> Student</a> |
-          <a href="#" class="text-blue-600 hover:text-blue-700"> Employee</a> |
-          <a href="#" class="text-red-600 hover:text-red-700"> Deny</a>
+           <div class="grid-column">
+                <div class="flex items-center space-x-4">
+                  <a href="#" class="text-blue-400 hover:text-blue-600"> <PiStudentFill size={25}/></a>  {/*student*/}
+                  <a href="#" class="text-lime-500 hover:text-lime-700"> <MdOutlineWork size={25}/></a>  {/*employeee*/}
+                  <a href="#" class="text-red-500 hover:text-red-700"> <IoIosCloseCircle size={25}/></a> {/*deny*/}
+                </div>
+              </div>
         </td>
           </tr>
     </tbody>
@@ -164,6 +189,8 @@
         </th>
       </tr>
     </thead>
+
+    
     <tbody>
       <tr class="border-b border-gray-200 hover:bg-gray-100">
         <td class="w-1/12">
@@ -178,8 +205,12 @@
          </a>
         </td>
         <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-          <a href="#" class="text-blue-600 hover:text-blue-700">Unlock</a> |
-          <a href="#" class="text-red-600 hover:text-red-700"> Deny</a>
+          <div class="grid-column">
+            <div class="flex items-center space-x-4">
+            <a href="#" class="text-blue-400 hover:text-blue-700"><FaUnlock size={25}/></a> {/*Unlock */}
+            <a href="#" class="text-red-500 hover:text-red-700"> <IoIosCloseCircle size={25}/></a> {/*deny*/}
+            </div>
+          </div>
         </td>
       </tr>
       <tr class="border-b border-gray-200 hover:bg-gray-100">
@@ -190,8 +221,12 @@
         <td class="w-3/12 px-6 py-4 whitespace-nowrap">9876543210</td>
         <td class="w-2/12 px-6 py-4 whitespace-nowrap">None</td>
         <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-          <a href="#" class="text-blue-600 hover:text-blue-700">Unlock</a> |
-          <a href="#" class="text-red-600 hover:text-red-700"> Deny</a>
+        <div class="grid-column">
+            <div class="flex items-center space-x-4">
+            <a href="#" class="text-blue-400 hover:text-blue-700"><FaUnlock size={25}/></a> {/*Unlock */}
+            <a href="#" class="text-red-500 hover:text-red-700"> <IoIosCloseCircle size={25}/></a> {/*deny*/}
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>

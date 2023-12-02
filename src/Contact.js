@@ -40,7 +40,7 @@ export default function Contact() {
           <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
 
           <div className="bg-orange-50 my-14 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
-          <form className="mt-8">
+          <form className="mt-6">
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -53,7 +53,7 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
-                className="w-full p-3 mt-4 border bg-amber-200 rounded-md"
+                className="w-full p-3 mt-4 border bg-amber-100 rounded-md"
               />
             </div>
             <div className="mb-4">
@@ -67,7 +67,7 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
-                className="w-full p-3 mt-4 border bg-amber-200 rounded-md"
+                className="w-full p-3 mt-4 border bg-amber-100 rounded-md"
               />
             </div>
             <div className="mb-4">
@@ -81,12 +81,12 @@ export default function Contact() {
                 type="text"
                 id="message"
                 name="message"
-                className="w-full p-3 mt-4 border bg-amber-600 rounded-md"
+                className="w-full p-3 mt-4 border bg-amber-200 rounded-md"
               />
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-[#D2B48C] hover:bg-[#B8860B] text-white font-bold py-2 px-4 rounded"
             >
               Submit
             </button>

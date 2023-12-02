@@ -11,7 +11,7 @@ export default function Register() {
         <a href="/login" className="text-white ml-4 absolute top-5 right-28 h-16 w-16">Sign In</a>
       </nav>
 
-      <div className="bg-orange-50 my-16 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
+      <div className="bg-orange-50 my-11 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
         <form className="">
           <h2 className="text-3xl dark:text-black font-bold text-center">
             Sign Up

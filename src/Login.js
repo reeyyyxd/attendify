@@ -1,34 +1,42 @@
 import React from "react";
-import TextField from '@mui/material/TextField';  
+import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
 
-
 export default function Login() {
   return (
-    <div style={{ backgroundColor: '#ffeed6' }} className="w-full">
+    <div style={{ backgroundColor: "#ffeed6" }} className="w-full h-screen">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
-        <a href="/register" className="text-white ml-4 absolute top-5 right-28 h-16 w-16">Sign up</a>
+        <a
+          href="/register"
+          className="text-white ml-4 absolute top-5 right-28 h-16 w-16"
+        >
+          Sign up
+        </a>
       </nav>
 
-      <div className="bg-orange-50 my-52 max-w-[400px] w-full mx-auto p-8 px-8 rounded-lg">
+      <div className="bg-orange-50 my-52 max-w-[500px]  mx-auto  p-8 px-8 rounded-lg">
         <form className="">
           <h2 className="text-3xl dark:text-black font-bold text-center">
             Sign In
           </h2>
-          <br/>
+          <br />
 
-        
-          <TextField id="outlined-basic" label="ID Number" variant="outlined" 
+          <TextField
+            id="outlined-basic"
+            label="ID Number"
+            variant="outlined"
             type="text"
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
-            
           />
-          <br/>
-          <br/>
+          <br />
+          <br />
 
-          <TextField id="outlined-basic" label="Password" variant="outlined" 
+          <TextField
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
             type="password"
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
           />
@@ -39,44 +47,21 @@ export default function Login() {
           >
             Log In
           </button>
-          <br/>
-          <br/>
+          <br />
+          <br />
 
           <button className="text-black hover:underline" onClick={() => {}}>
-             Forgot Password?
+            Forgot Password?
           </button>
-          <br/>
+          <br />
 
           <Link to="/register" className="text-black hover:underline">
-          <span style={{ textDecoration: 'underline' }}>No account yet? Register</span>
+            <span style={{ textDecoration: "underline" }}>
+              No account yet? Register
+            </span>
           </Link>
-
         </form>
       </div>
-
-      
-      <footer>
-      <Link to="/indexStudent" className="text-black hover:underline">
-       to front page
-      </Link>
-      <br/>
-      <Link to="/admin" className="text-black hover:underline">
-       to admin
-      </Link>
-      <br/>
-      <Link to="/joined" className="text-black hover:underline">
-       to joinedEvent
-      </Link>
-      <br/>
-      <Link to="/orgindex" className="text-black hover:underline">
-       to orgindex
-      </Link>
-
-
-
-
-      </footer>
-      
     </div>
   );
 }
