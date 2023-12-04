@@ -16,7 +16,7 @@ export default function Adminn() {
         <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
       </div>
 
-      <div className="flex items-center  ms-8 pt-6 space-x-4">
+      <div className="flex items-center ms-8 pt-6 space-x-4">
         <div className="flex-grow">
           <input
             type="search"
