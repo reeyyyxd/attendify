@@ -11,6 +11,12 @@ import OrganizationHome from "./OrganizationHome";
 import Selectrole from "./Selectrole";
 import About from "./About";
 import Contact from "./Contact";
+import AdminLogin from "./AdminLogin";
+import EmployeeLogin from "./EmployeeLogin";
+import NoRole from "./NoRole";
+import AdminRole from "./AdminRole";
+import AdminUnlock from "./AdminUnlock";
+
 
 
 export default function App() {
@@ -28,6 +34,12 @@ export default function App() {
         <Route path="/select" element={<Selectrole/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/adminlogin" element={<AdminLogin/>} />
+        <Route path="/employeelogin" element={<EmployeeLogin/>} />
+        <Route path="/norole" element={<NoRole/>}/>
+        <Route path="/admin/:id" element={<AdminRole />} />
+        <Route path="/unlock/:id" element={<AdminUnlock/>}/>
+
         
  
       </Routes>

@@ -1,33 +1,9 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
-
 import logoImg from "./assets/logo.png";
-import {useState} from "react";
 
 export default function Login() {
-
-  const [idNumber, setIdNumber] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleClick=(e)=>{
-      e.preventDefault()
-      const loginStudent= {idNumber,password}
-      console.log(loginStudent)
-      fetch(`http://localhost:8080/user/seeAllUsers`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(()=>{
-        console.log("Logged in")
-      })
-  }
-
-
-
-
-
   return (
     <div style={{ backgroundColor: "#ffeed6" }} className="w-full h-screen">
       <nav className="bg-teal-950">

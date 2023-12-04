@@ -1,135 +1,100 @@
-import React from "react";
-import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import logoImg from "./assets/logo.png";
-import { FaUserEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import { TbDeviceDesktopAnalytics } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export default function Adminn() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    // Fetch data for Events
+    fetch("http://localhost:8080/event/getAllEvents")
+      .then((response) => response.json())
+      .then((data) => setEvents(data));
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
   return (
-    <div className="h-screen w-full bg-orange-100 ">
+    <div className="h-screen w-full bg-orange-100">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
       </nav>
 
       <div className="w-1/3 ms-8 mt-6">
-          <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
+        <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
+      </div>
+
+      <div className="flex items-center w-full ms-8 pt-6 space-x-4">
+        <div className="flex-grow">
+          <input
+            type="search"
+            placeholder="Search here..."
+            className="bg-orange-200 bg-opacity-100 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          />
         </div>
 
-        <div className="flex items-center w-full ms-8 pt-6 space-x-4">
-        <div className="flex-grow">
-            <input
-               type="search"
-               placeholder="Search here..."
-               className="bg-orange-200 bg-opacity-100 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
-             />
-        </div>
-          <div className="w-1/6">
-          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
-          <Link to="/admin" className="text-blue-600 hover:text-blue-700">
-            Users
-          </Link>
-          </Button>
-          </div>
-          
-          <div className="w-1/6">
-          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
-          <Link to="/admineve" className="text-blue-600 hover:text-blue-700">
-            Event
-          </Link>
-          </Button>
-        </div>
-       
         <div className="w-1/6">
-        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
-          <Link
-            to="/verification"
-            className="text-blue-600 hover:text-blue-700"
-          >
-            Verification
-          </Link>
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+            <Link to="/admineve" className="text-blue-600 hover:text-blue-700">
+              Event
+            </Link>
           </Button>
         </div>
-        
+
         <div className="w-1/6">
-        <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
+            <Link
+              to="/verification"
+              className="text-blue-600 hover:text-blue-700"
+            >
+              Verification
+            </Link>
+          </Button>
+        </div>
+
+        <div className="w-1/6">
+          <Button variant="contained" sx={{ ml: 'auto',bgcolor: '#F0E68C' }}>
             {/* Logout Link */}
-          <Link to="/login" className="text-blue-600 hover:text-blue-700">
-            Logout
-          </Link>
+            <Link to="/login" className="text-blue-600 hover:text-blue-700">
+              Logout
+            </Link>
           </Button>
         </div>
       </div>
 
       {/* table */}
-
-
-
-
-
-
-
-      <table class="table-auto  mt-6 w-full ">
-  <thead>
-    <tr class="bg-teal-950"> 
-      <th class="w-1/12">
-        <input type="checkbox" class="mr-4"></input>
-      </th>
-      <th class="w-2/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-        Name
-      </th>
-      <th class="w-3/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-        People Attended
-      </th>
-      <th class="w-2/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-        Organizer
-      </th>
-      <th class="w-4/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
-        Action
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="w-1/12">
-        <input type="checkbox" class="ms-12"></input>
-      </td>
-      <td class="w-2/12 px-6 py-4 whitespace-nowrap">Event 1</td>
-      <td class="w-3/12 px-6 py-4 whitespace-nowrap">20</td>
-      <td class="w-2/12 px-6 py-4 whitespace-nowrap">John Doe</td>
-      <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-        <div class="grid-column">
-          <div class="flex items-center space-x-4">
-              <a href="#" class="text-blue-600 hover:text-blue-700"><FaUserEdit size={25}/></a> 
-              <a href="#" className="text-orange-500 hover:text-orange-700"><TbDeviceDesktopAnalytics size={25}/></a> 
-              <a href="#" class="text-red-600 hover:text-red-700"><MdDelete size={25}/></a>
-          </div>
-        </div>
-        
-      </td>
-    </tr>
-    <tr class="border-b border-gray-200 hover:bg-gray-100">
-      <td class="w-1/12">
-        <input type="checkbox" class="ms-12"></input>
-      </td>
-      <td class="w-2/12 px-6 py-4 whitespace-nowrap">Event 2</td>
-      <td class="w-3/12 px-6 py-4 whitespace-nowrap">45</td>
-      <td class="w-2/12 px-6 py-4 whitespace-nowrap">Doe John</td>
-      <td class="w-4/12 px-6 py-4 whitespace-nowrap">
-      <div class="grid-column">
-          <div class="flex items-center space-x-4">
-              <a href="#" class="text-blue-600 hover:text-blue-700"><FaUserEdit size={25}/></a> 
-              <a href="#" className="text-orange-500 hover:text-orange-700"> <TbDeviceDesktopAnalytics size={25}/></a> 
-              <a href="#" class="text-red-600 hover:text-red-700">  <MdDelete size={25}/></a>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-      
+      <table className="table-auto mt-6 w-full">
+        <thead>
+          <tr className="bg-teal-950">
+            <th className="w-1/12">
+              <input type="checkbox" className="mr-4"></input>
+            </th>
+            <th className="w-2/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              Event Name
+            </th>
+            <th className="w-3/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              People Attended
+            </th>
+            <th className="w-2/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              Organizer
+            </th>
+            <th className="w-4/12 px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {events.map((event) => (
+            <tr key={event.id}>
+              <td>{event.eventname}</td>
+              <td>{event.department}</td>
+              <td>{event.startdate}</td>
+              <td>{event.timestart}</td>
+              <td>{event.timeend}</td>
+              
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
