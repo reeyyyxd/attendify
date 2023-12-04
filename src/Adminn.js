@@ -9,8 +9,8 @@ import { Button } from "@mui/material";
 
 export default function Adminn() {
   return (
-    <div className="h-screen w-full bg-orange-100 ">
-      <nav className="bg-teal-950">
+    <div className="h-screen w-100 bg-orange-100 ">
+      <nav className="bg-teal-950 w-full">
         <img className="h-12" src={logoImg} alt="logo" />
       </nav>
 
@@ -18,7 +18,7 @@ export default function Adminn() {
         <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
       </div>
 
-      <div className="flex items-center w-full ms-8 pt-6 space-x-4">
+      <div className="flex items-center  ms-8 pt-6 space-x-4">
         <div className="flex-grow">
           <input
             type="search"
