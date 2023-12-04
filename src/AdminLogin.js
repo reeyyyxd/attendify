@@ -1,58 +1,63 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
-
 import logoImg from "./assets/logo.png";
-import {useState} from "react";
+import { useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 export default function Login() {
-
-  const [idNumber, setIdNumber] = useState('');
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleClick=(e)=>{
-      e.preventDefault()
-      const loginStudent= {idNumber,password}
-      console.log(loginStudent)
-      fetch(`http://localhost:8080/user/seeAllUsers`, {
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    if (!username.toLowerCase().includes("admin")) {
+      console.error("Access denied. Only admin users are allowed.");
+      return;
+    }
+
+    const loginAdmin = { username, password };
+    // to be continue, more secure
+    // Convert the loginAdmin object to query parameters
+    const queryParams = new URLSearchParams(loginAdmin).toString();
+
+    fetch(`http://localhost:8080/user/seeAllUsers?${queryParams}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(()=>{
-        console.log("Logged in")
+    })
+      .then(() => {
+        console.log("Logged in as admin");
+        navigate("/admin");
       })
-  }
-
-
-
-
+      .catch((error) => {
+        console.error("Error during login:", error);
+      });
+  };
 
   return (
     <div style={{ backgroundColor: "#ffeed6" }} className="w-full h-screen">
       <nav className="bg-teal-950">
         <img className="h-12" src={logoImg} alt="logo" />
-        <a
-          href="/register"
-          className="text-white ml-4 absolute top-5 right-28 h-16 w-16"
-        >
-          Sign up
-        </a>
       </nav>
 
       <div className="bg-orange-50 my-52 max-w-[500px]  mx-auto  p-8 px-8 rounded-lg">
         <form className="">
           <h2 className="text-3xl dark:text-black font-bold text-center">
-            Sign In
+            Admin Log In
           </h2>
           <br />
 
           <TextField
             id="outlined-basic"
-            label="ID Number"
+            label="Username"
             variant="outlined"
             type="text"
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <br />
           <br />
@@ -63,27 +68,18 @@ export default function Login() {
             variant="outlined"
             type="password"
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button
             type="submit"
             className="w-full p-3 mt-4 bg-teal-950 text-white rounded-md"
+            onClick={handleClick}
           >
             Log In
           </button>
           <br />
-          <br />
-
-          <button className="text-black hover:underline" onClick={() => {}}>
-            Forgot Password?
-          </button>
-          <br />
-
-          <Link to="/register" className="text-black hover:underline">
-            <span style={{ textDecoration: "underline" }}>
-              No account yet? Register
-            </span>
-          </Link>
         </form>
       </div>
     </div>
