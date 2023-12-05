@@ -10,7 +10,7 @@ import TableCell from "@mui/material/TableCell";
 import Button from "@mui/material/Button";
 import logoImg from "./assets/logo.png";
 
-//haha foolish fool
+
 export default function AdminVerification() {
   const [users, setUsers] = useState([]);
   const [students, setStudents] = useState([]);
