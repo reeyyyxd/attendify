@@ -18,7 +18,7 @@ export default function Adminn() {
 
       <div className="flex items-center ms-8 pt-6 space-x-4">
         <div className="flex-grow">
-          <input
+          <input 
             type="search"
             placeholder="Search here..."
             className="bg-orange-200 bg-opacity-100 w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams} from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -13,6 +13,7 @@ import logoImg from "./assets/logo.png";
 export default function AdminVerification() {
   const [users, setUsers] = useState([]);
   const [students, setStudents] = useState([]);
+  const {id}=useParams()
 
   useEffect(() => {
     fetch("http://localhost:8080/user/seeAllUsers")
@@ -22,9 +23,14 @@ export default function AdminVerification() {
     fetch("http://localhost:8080/student/getAllStudents")
       .then((response) => response.json())
       .then((data) => setStudents(data));
+
+
   }, []);
 
-  
+  const deleteUser = async (id) => {
+    await axios.delete('http://localhost:8080/user/${id}')
+    loadUsers()
+}
 
   return (
     <div className="h-screen w-full bg-orange-100">
@@ -36,7 +42,7 @@ export default function AdminVerification() {
         <h1 className="text-black font-bold text-2xl">Hello, Admin</h1>
       </div>
 
-      <div className="flex items-center w-full ms-8 pt-6 space-x-4">
+      <div className="flex items-center ms-8 pt-6 space-x-4">
         <div className="flex-grow">
           <input
             type="search"
@@ -106,6 +112,11 @@ export default function AdminVerification() {
                   <Link to={`/role/${user.id}`}>
                     Update
                   </Link>
+
+                  <Link onClick={()=>deleteuser(user)} to={`/lock/${student.id}`}>
+                  Delete
+                </Link>
+                
                 </TableCell>
                 </TableRow>
               ))}
@@ -141,6 +152,8 @@ export default function AdminVerification() {
                 <Link to={`/unlock/${student.id}`}>
                   Update
                 </Link>
+               
+                
               </TableCell>
             </TableRow>
           ))}

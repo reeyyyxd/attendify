@@ -39,7 +39,6 @@ export default function App() {
         <Route path="/norole" element={<NoRole/>}/>
         <Route path="/admin/:id" element={<AdminRole />} />
         <Route path="/unlock/:id" element={<AdminUnlock/>}/>
-
         
  
       </Routes>
