@@ -9,8 +9,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function AdminRole() {
     let navigate = useNavigate();
@@ -80,24 +78,24 @@ export default function AdminRole() {
           <form className="flex items-center w-full ms-8 pt-6 space-x-4" onSubmit={onSubmit}>
             <div className="flex-grow">
               <TextField
-                label="ID Number"
-                variant="outlined"
-                fullWidth
-                defaultValue={idNumber}
-                onChange={onInputChange}
-                name="idNumber"
-              />
+              label="ID Number"
+              variant="outlined"
+              fullWidth
+              value={idNumber}
+              onChange={onInputChange}
+              name="idNumber"
+            />
             </div>
     
             <div className="flex-grow">
               <TextField
-                label="First Name"
-                variant="outlined"
-                fullWidth
-                defaultValue={firstname}
-                onChange={onInputChange}
-                name="firstname"
-              />
+              label="First Name"
+              variant="outlined"
+              fullWidth
+              value={firstname}
+              onChange={onInputChange}
+              name="firstname"
+            />
             </div>
     
             <div className="flex-grow">

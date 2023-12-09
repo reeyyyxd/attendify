@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/adminlogin" element={<AdminLogin/>} />
         <Route path="/employeelogin" element={<EmployeeLogin/>} />
         <Route path="/norole" element={<NoRole/>}/>
-        <Route path="/admin/:id" element={<AdminRole />} />
+        <Route path="/role/:id" element={<AdminRole />} />
         <Route path="/unlock/:id" element={<AdminUnlock/>}/>
         
  

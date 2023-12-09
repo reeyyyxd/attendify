@@ -10,7 +10,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
-export default function AdminRole() {
+export default function AdminUnlock() {
   let navigate = useNavigate();
   const { id } = useParams();
 
