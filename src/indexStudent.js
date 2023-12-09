@@ -437,7 +437,7 @@ export default function IndexStudent() {
         open={isSnackbarOpen}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        message="Sucessfully Joined!"
+        message="Success!"
         action={
           <React.Fragment>
             <IconButton
