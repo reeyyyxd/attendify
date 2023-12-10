@@ -20,10 +20,9 @@ export default function Login() {
         "Content-Type": "application/json",
       },
     }).then(()=>{
-        console.log("Logged in")
+        console.log("Logged in") 
       })
-  }
-
+  } 
 
 
 
@@ -65,7 +64,7 @@ export default function Login() {
             className="w-full p-3 mt-4 border border-gray-300 rounded-md"
           />
 
-          <button
+          <button onClick={handleClick} 
             type="submit"
             className="w-full p-3 mt-4 bg-teal-950 text-white rounded-md"
           >

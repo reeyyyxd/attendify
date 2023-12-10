@@ -1,69 +1,80 @@
 import React, { useState, useEffect } from "react";
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Modal, Box, TextField, IconButton, Paper } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
-import Snackbar from '@mui/material/Snackbar';
-import CloseIcon from '@mui/icons-material/Close';
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  Modal,
+  Box,
+  TextField,
+  IconButton,
+  Paper,
+} from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 import event2 from "./assets/event2.jpg";
 import logoImg from "./assets/logo.png";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 //haha i fooled you
 const departments = [
-  { label: 'Public'},
-  { label: 'CCS'},
-  { label: 'CASE'},
-  { label: 'CEA'},
-  { label: 'CMBA'},
-  { label: 'CCJ'},
-  { label: 'CNAHS'},
+  { label: "Public" },
+  { label: "CCS" },
+  { label: "CASE" },
+  { label: "CEA" },
+  { label: "CMBA" },
+  { label: "CCJ" },
+  { label: "CNAHS" },
 ];
 
 export default function IndexStudent() {
   const navigate = useNavigate();
   const [isSignupModalOpen, setSignupModalOpen] = useState(false);
   const [isYearModalOpen, setYearModalOpen] = useState(false);
-  const [isSnackbarOpen, setSnackbarOpen] = useState(false); 
-  const [events, setEvents] =useState([]);
-  const [eventname, setEventname] =useState('');
-  const [department, setDepartment] =useState('');
-  const [startdate, setStartdate] =useState('');
-  const [timestart, setTimestart] =useState('');
-  const [timeend, setTimeend] =useState('');
-  const [courseandyear, setCourseandyear] = useState('');
-  const [jdepartment, setJdepartment] = useState('');
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [eventname, setEventname] = useState("");
+  const [department, setDepartment] = useState("");
+  const [startdate, setStartdate] = useState("");
+  const [timestart, setTimestart] = useState("");
+  const [timeend, setTimeend] = useState("");
+  const [courseandyear, setCourseandyear] = useState("");
+  const [jdepartment, setJdepartment] = useState("");
 
+  const handleCreateEvent = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/event/createEvent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventname,
+          department,
+          startdate,
+          timestart,
+          timeend,
+        }),
+      });
 
+      if (response.ok) {
+        // Event creation was successful
+        handleSnackbarOpen();
 
-    const handleCreateEvent = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/event/createEvent", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ eventname, department, startdate, timestart, timeend }),
-        });
-
-        if (response.ok) {
-          // Event creation was successful
-          handleSnackbarOpen();
-
-          // Optionally, you can navigate to a different page after creating the event
-          setTimeout(() => {
-            navigate("/indexStudent");
-          }, 1500);
-        } else {
-          // Handle errors when creating the event
-          console.error("Event Creation Failed");
-        }
-      } catch (error) {
-        console.error("Error creating event:", error);
+        // Optionally, you can navigate to a different page after creating the event
+        setTimeout(() => {
+          navigate("/indexStudent");
+        }, 1500);
+      } else {
+        // Handle errors when creating the event
+        console.error("Event Creation Failed");
       }
-    };
-
-    
+    } catch (error) {
+      console.error("Error creating event:", error);
+    }
+  };
 
   const openSignupModal = () => {
     setSignupModalOpen(true);
@@ -86,47 +97,45 @@ export default function IndexStudent() {
   };
 
   useEffect(() => {
-    
     if (isSnackbarOpen) {
       const timeoutId = setTimeout(() => {
         setSnackbarOpen(false);
-      }, 6000); 
+      }, 6000);
 
       return () => clearTimeout(timeoutId);
     }
   }, [isSnackbarOpen]);
 
-
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
   };
 
-
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "#fff8dc",
+    border: "2px solid #000",
     boxShadow: 24,
     pt: 2,
     px: 4,
     pb: 3,
+    borderRadius: "15px",
   };
 
   const yearModalStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 300,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "#fff8dc",
+    border: "2px solid #000",
     boxShadow: 24,
     pt: 2,
     px: 4,
@@ -145,17 +154,18 @@ export default function IndexStudent() {
 
   useEffect(() => {
     fetchEvents();
-  }, []); 
+  }, []);
 
-
-  
   const handleJoinEvent = async () => {
     try {
-      const response = await fetch("http://localhost:8080/attendance/insertrecord", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ courseandyear, jdepartment }), 
-      });
+      const response = await fetch(
+        "http://localhost:8080/attendance/insertrecord",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ courseandyear, jdepartment }),
+        }
+      );
 
       if (response.ok) {
         // Handle success, e.g., show a success message or navigate to another page
@@ -173,40 +183,39 @@ export default function IndexStudent() {
     }
   };
 
-
-
-
   return (
     <div className="h-screen w-full bg-orange-100">
       <nav className="flex justify-between items-center bg-teal-950 p-4">
         <img className="h-12" src={logoImg} alt="logo" />
 
         <div className="flex items-center">
-          <Button variant="contained" onClick={openSignupModal} sx={{ ml: 'auto',bgcolor: '#052e2e' }}>
+          <Button
+            variant="contained"
+            onClick={openSignupModal}
+          
+            sx={{ ml: "auto", bgcolor: "#052e2e" }}
+          >
             Create Event
           </Button>
 
-
-           <Button variant="contained" sx={{ ml: 2, bgcolor: '#052e2e' }}>
-        <Link to="/login" className="text-white text-decoration-none">
-          Log Out
-        </Link>
-      </Button>
-   
+          <Button variant="contained" sx={{ ml: 2, bgcolor: "#052e2e" }}>
+            <Link to="/login" className="text-white text-decoration-none">
+              Log Out
+            </Link>
+          </Button>
         </div>
       </nav>
 
-      <h1 className="text-3xl font-bold text-center mt-4">
+      <h1 className="text-3xl font-bold text-center mt-12 ">
         Available Events
       </h1>
-      <br/>
+      <br />
 
-
-        <div className="flex justify-center items-center">
-       {events.map((event) => (
-      <Paper key={event.id} sx={{ maxWidth: 345, margin: "0 10px" }}>
-        <CardActionArea>
-          {/* <CardMedia
+      <div className="flex justify-center items-center">
+        {events.map((event) => (
+          <Paper key={event.id} sx={{ maxWidth: 345, margin: "0 10px" }}>
+            <CardActionArea>
+              {/* <CardMedia
             component="img"
             height="200"
             width="345"
@@ -214,34 +223,32 @@ export default function IndexStudent() {
             //src={event2}  
             sx={{ objectFit: 'cover' }}
           /> */}
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Event Name: {event.eventname}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Department: {event.department}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Date: {event.startdate}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Time Start: {event.timestart}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Time End: {event.timeend}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary" onClick={openYearModal}>
-            Join Event
-          </Button>
-        </CardActions>
-      </Paper>
-    ))}
-  </div>
-
-  
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  Event Name: {event.eventname}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Department: {event.department}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Date: {event.startdate}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Time Start: {event.timestart}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Time End: {event.timeend}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary" onClick={openYearModal}>
+                Join Event
+              </Button>
+            </CardActions>
+          </Paper>
+        ))}
+      </div>
 
       <Modal
         open={isSignupModalOpen}
@@ -251,13 +258,17 @@ export default function IndexStudent() {
       >
         <Box sx={{ ...style, width: 400 }}>
           <h2 id="signup-modal-title">Create Event</h2>
-          <TextField label="Event Name" id="eventname" variant="outlined" margin="normal" fullWidth 
-          value={eventname}
-          onChange={(e) => setEventname(e.target.value)}
+          <TextField
+            label="Event Name"
+            id="eventname"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            value={eventname}
+            onChange={(e) => setEventname(e.target.value)}
           />
 
-           
-            <Autocomplete
+          <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={departments}
@@ -268,14 +279,13 @@ export default function IndexStudent() {
                 label="Department"
                 margin="normal"
                 fullWidth
-
                 value={department}
-            onChange={(e) => setDepartment(e.target.value)}
+                onChange={(e) => setDepartment(e.target.value)}
               />
             )}
-          />  
+          />
 
-         <TextField
+          <TextField
             id="event-start-date"
             label="Start Date"
             type="date"
@@ -323,7 +333,6 @@ export default function IndexStudent() {
             onChange={(e) => setTimeend(e.target.value)}
           />
 
-        
           {/* <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -359,18 +368,20 @@ export default function IndexStudent() {
           margin="normal"
             fullWidth
         /> */}
-         
-         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-            <Button variant="contained" onClick={handleCreateEvent}>
+
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+            <Button sx={{ bgcolor: "#f0e68c" }} onClick={handleCreateEvent}>
               Create Event
             </Button>
-            <Button onClick={closeSignupModal} sx={{ ml: 1 }}>
+            <Button
+              onClick={closeSignupModal}
+              sx={{ ml: 1, bgcolor: "#f0e68c" }}
+            >
               Close
             </Button>
           </Box>
         </Box>
       </Modal>
-
 
       <Modal
         open={isYearModalOpen}
@@ -378,31 +389,29 @@ export default function IndexStudent() {
         aria-labelledby="year-modal-title"
         aria-describedby="year-modal-description"
       >
-
-      <Box sx={{ ...yearModalStyle, width: 300 }}>
-        <h2 id="year-modal-title">Join Event</h2>
-        <TextField
-          label="Course and Year"
-          id="year"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={courseandyear}
-          onChange={(e) => setCourseandyear(e.target.value)}
-        />
+        <Box sx={{ ...yearModalStyle, width: 300 }}>
+          <h2 id="year-modal-title">Join Event</h2>
+          <TextField
+            label="Course and Year"
+            id="year"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            value={courseandyear}
+            onChange={(e) => setCourseandyear(e.target.value)}
+          />
 
           <TextField
-          label="Department"
-          id="year"
-          variant="outlined"
-          margin="normal"
-          fullWidth
-          value={jdepartment}
-          onChange={(e) => setJdepartment(e.target.value)}
-        />
-         
+            label="Department"
+            id="year"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            value={jdepartment}
+            onChange={(e) => setJdepartment(e.target.value)}
+          />
 
-        {/* <Autocomplete
+          {/* <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={departments}
@@ -417,21 +426,19 @@ export default function IndexStudent() {
           )}
         /> */}
 
-
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-          <Button variant="contained" onClick={closeYearModal}>
-            Cancel
-          </Button>
-          <Button
-          variant="contained"
-          onClick={handleJoinEvent}
-          sx={{ ml: 1 }}
-        >
-          Confirm
-        </Button>
-
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+            <Button variant="contained" onClick={closeYearModal}>
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleJoinEvent}
+              sx={{ ml: 1 }}
+            >
+              Confirm
+            </Button>
+          </Box>
         </Box>
-      </Box>
       </Modal>
       <Snackbar
         open={isSnackbarOpen}
@@ -451,8 +458,6 @@ export default function IndexStudent() {
           </React.Fragment>
         }
       />
-
-
     </div>
   );
 }

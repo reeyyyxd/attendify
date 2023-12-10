@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -10,11 +10,14 @@ import TableCell from "@mui/material/TableCell";
 import Button from "@mui/material/Button";
 import logoImg from "./assets/logo.png";
 
+import axios from "axios";
+import { MdOutlineSystemSecurityUpdate } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 export default function AdminVerification() {
   const [users, setUsers] = useState([]);
   const [students, setStudents] = useState([]);
-  const {id}=useParams()
+  const { id } = useParams();
 
   useEffect(() => {
     fetch("http://localhost:8080/user/seeAllUsers")
@@ -24,14 +27,18 @@ export default function AdminVerification() {
     fetch("http://localhost:8080/student/getAllStudents")
       .then((response) => response.json())
       .then((data) => setStudents(data));
-
-
   }, []);
 
+  const loadUsers = async () => {
+    const response = await fetch("http://localhost:8080/user/seeAllUsers");
+    const data = await response.json();
+    setUsers(data);
+  };
+
   const deleteUser = async (id) => {
-    await axios.delete('http://localhost:8080/user/${id}')
-    loadUsers()
-}
+    await axios.delete(`http://localhost:8080/user/${id}`);
+    loadUsers(); // Update user list after deleting
+  };
 
   return (
     <div className="h-screen w-full bg-orange-100">
@@ -99,7 +106,6 @@ export default function AdminVerification() {
               </TableRow>
             </TableHead>
             <TableBody>
-
               {users.map((user) => (
                 <TableRow key={user.id}>
                   <TableCell>{user.id}</TableCell>
@@ -107,63 +113,65 @@ export default function AdminVerification() {
                   <TableCell>{user.firstname}</TableCell>
                   <TableCell>{user.lastname}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.isStudent }</TableCell>
+                  <TableCell>{user.isStudent}</TableCell>
                   <TableCell>{user.isEmployee}</TableCell>
                   <TableCell>
-                  <Link to={`/role/${user.id}`}>
-                    Update
-                  </Link>
+                    <div className="flex">
+                      <Link to={`/role/${user.id}`} className="mr-4 text-lime-400  hover:text-lime-800" >
+                        <MdOutlineSystemSecurityUpdate size={25} />
+                      </Link>
 
-                  <Link onClick={()=>deleteuser(user)} to={`/lock/${student.id}`}>
-                  Delete
-                </Link>
-                
-                </TableCell>
+                      <Link
+                        onClick={() => deleteUser(user)}
+                        to={`/lock/${students.id}`}
+                        className="mr-4 text-red-400 hover:text-red-800"
+                      >
+                        <MdDelete size={25}/>
+                      </Link>
+                    </div>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>  
+      </Paper>
 
       {/* Privileges table */}
       <Paper elevation={3} className="mt-6 p-4">
-    <h2 className="text-black font-bold text-2xl mb-4">Privileges</h2>
-    <TableContainer>
-      <Table> 
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>ID Number</TableCell>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Is SSG</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {students.map((student) => (
-            <TableRow key={student.id}>
-              <TableCell>{student.id}</TableCell>
-              <TableCell>{student.idNumber}</TableCell>
-              <TableCell>{student.firstname}</TableCell>
-              <TableCell>{student.lastname}</TableCell>
-              <TableCell>{student.isSSG}</TableCell> {/* Correct field name */}
-              <TableCell>
-                <Link to={`/unlock/${student.id}`}>
-                  Update
-                </Link>
-               
-                
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </Paper>
-     
+        <h2 className="text-black font-bold text-2xl mb-4">Privileges</h2>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>ID Number</TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>Is SSG</TableCell>
+                <TableCell>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {students.map((student) => (
+                <TableRow key={student.id}>
+                  <TableCell>{student.id}</TableCell>
+                  <TableCell>{student.idNumber}</TableCell>
+                  <TableCell>{student.firstname}</TableCell>
+                  <TableCell>{student.lastname}</TableCell>
+                  <TableCell>{student.isSSG}</TableCell>{" "}
+                  {/* Correct field name */}
+                  <TableCell>
+                    <Link to={`/unlock/${student.id}`}>
+                      <MdOutlineSystemSecurityUpdate />
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
     </div>
-
   );
-};
+}

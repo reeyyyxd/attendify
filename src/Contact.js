@@ -2,36 +2,42 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import logoImg from "./assets/logo.png";
+import { Button } from "@mui/material";
 
 export default function Contact() {
   return (
     <div style={{ backgroundColor: "#ffeed6" }} className="w-full">
-      <nav className="bg-teal-950">
-        <img className="h-12" src={logoImg} alt="logo" />
-        <a
-          href="/"
-          className="text-white ml-4 absolute top-5 right-1/4 h-16 w-16"
-        >
-          Home
-        </a>
-        <a
-          href="/contact"
-          className="text-white ml-4 absolute top-5 right-80 h-16 w-16"
-        >
-          Contac&nbsp;us
-        </a>
-        <a
-          href="/about"
-          className="text-white ml-4 absolute top-5 right-56 h-16 w-16"
-        >
-          About&nbsp;us
-        </a>
-        <a
-          href="/"
-          className="text-white ml-4 absolute top-5 right-36 h-16 w-16"
-        >
-          Logout
-        </a>
+       <nav className="flex justify-between items-center bg-teal-950 p-4">
+        <img className="h-20 ml-4" src={logoImg} alt="logo" />
+
+        <div className=" ">
+    
+        <Button variant="contained" sx={{ ml: 2, bgcolor: "#052e2e"}}>
+            <Link to="/front" className="text-white text-decoration-none">
+              Home
+            </Link>
+          </Button>
+
+          
+          <Button variant="contained" sx={{ ml: 2, bgcolor: "#052e2e"}}>
+            <Link to="/contact" className="text-white text-decoration-none">
+              Contact us
+            </Link>
+          </Button>
+
+          <Button variant="contained" sx={{ ml: 2, bgcolor: "#052e2e" }}>
+            <Link to="/about" className="text-white text-decoration-none">
+              About us
+            </Link>
+          </Button>
+
+          <Button variant="contained" sx={{ ml: 2,mr: 10, bgcolor: "#CBA906" }}>
+            <Link to="/login" className="text-white text-decoration-none">
+              Sign in
+            </Link>
+          </Button>
+
+        </div>
       </nav>
 
       <div className="h-screen w-full bg-orange-100 ">

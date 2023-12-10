@@ -1,33 +1,40 @@
 import React, { useState, useEffect } from "react";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions, Modal, Box, TextField, IconButton } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
-import Snackbar from '@mui/material/Snackbar';
-import CloseIcon from '@mui/icons-material/Close';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  Modal,
+  Box,
+  TextField,
+  IconButton,
+} from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 import event2 from "./assets/event2.jpg";
 import logoImg from "./assets/logo.png";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const departments = [
-  { label: 'Public'},
-  { label: 'CCS'},
-  { label: 'CASE'},
-  { label: 'CEA'},
-  { label: 'CMBA'},
-  { label: 'CCJ'},
-  { label: 'CNAHS'},
+  { label: "Public" },
+  { label: "CCS" },
+  { label: "CASE" },
+  { label: "CEA" },
+  { label: "CMBA" },
+  { label: "CCJ" },
+  { label: "CNAHS" },
 ];
 
 export default function OrganizationHome() {
   const navigate = useNavigate();
   const [isSignupModalOpen, setSignupModalOpen] = useState(false);
   const [isYearModalOpen, setYearModalOpen] = useState(false);
-  const [isSnackbarOpen, setSnackbarOpen] = useState(false); 
+  const [isSnackbarOpen, setSnackbarOpen] = useState(false);
 
   const openSignupModal = () => {
     setSignupModalOpen(true);
@@ -50,81 +57,78 @@ export default function OrganizationHome() {
   };
 
   useEffect(() => {
-    
     if (isSnackbarOpen) {
       const timeoutId = setTimeout(() => {
         setSnackbarOpen(false);
-      }, 6000); 
+      }, 6000);
 
       return () => clearTimeout(timeoutId);
     }
   }, [isSnackbarOpen]);
 
-
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
   };
 
-
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "#fff8dc",
+    border: "2px solid #000",
     boxShadow: 24,
     pt: 2,
     px: 4,
     pb: 3,
+    borderRadius: "15px",
   };
 
   const yearModalStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 300,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     pt: 2,
     px: 4,
     pb: 3,
   };
 
-
   return (
-    <div style={{ backgroundColor: '#ffeed6' }} className="w-full">
+    <div style={{ backgroundColor: "#ffeed6" }} className="w-full h-full">
       <nav className="flex justify-between items-center bg-teal-950 p-4">
         <img className="h-12" src={logoImg} alt="logo" />
 
         <div className="flex items-center">
-          <Button variant="contained" onClick={openSignupModal} sx={{ ml: 'auto',bgcolor: '#052e2e' }}>
+          <Button
+            variant="contained"
+            onClick={openSignupModal}
+            sx={{ ml: "auto", bgcolor: "#052e2e" }}
+          >
             Create Event
           </Button>
 
-
-           <Button variant="contained" sx={{ ml: 2, bgcolor: '#052e2e' }}>
-        <Link to="/login" className="text-white text-decoration-none">
-          Log Out
-        </Link>
-      </Button>
-   
+          <Button variant="contained" sx={{ ml: 2, bgcolor: "#052e2e" }}>
+            <Link to="/login" className="text-white text-decoration-none">
+              Log Out
+            </Link>
+          </Button>
         </div>
       </nav>
 
-      <h1 className="text-3xl font-bold text-center mt-4">
-        Available Events
-      </h1>
-      <br/>
+      <h1 className="text-3xl font-bold text-center mt-4">Available Events</h1>
+      <br />
 
       <div className="flex justify-center items-center">
-        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+        <Card sx={{ maxWidth: 345, margin: "0 10px", bgcolor: "#fffacd" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -132,7 +136,7 @@ export default function OrganizationHome() {
               width="345"
               image={event2}
               alt="Event 1"
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: "cover" }}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -144,14 +148,18 @@ export default function OrganizationHome() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary" onClick={openYearModal} >
+            <Button
+              sx={{ bgcolor: "	#ffdead" }}
+              size="small"
+              color="primary"
+              onClick={openYearModal}
+            >
               See Event
             </Button>
           </CardActions>
         </Card>
 
-
-        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+        <Card sx={{ maxWidth: 345, margin: "0 10px", bgcolor: "#fffacd" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -159,7 +167,7 @@ export default function OrganizationHome() {
               width="345"
               image={event2}
               alt="Event 2"
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: "cover" }}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -171,21 +179,18 @@ export default function OrganizationHome() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button sx={{ bgcolor: "	#ffdead" }} size="small" color="primary">
               See Event
             </Button>
           </CardActions>
         </Card>
       </div>
 
-
-      <h1 className="text-3xl font-bold text-center mt-4">
-        Events Created
-      </h1>
-      <br/>
+      <h1 className="text-3xl font-bold text-center mt-4">Events Created</h1>
+      <br />
 
       <div className="flex justify-center items-center">
-        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+        <Card sx={{ maxWidth: 345, margin: "0 10px", bgcolor: "#fffacd" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -193,7 +198,7 @@ export default function OrganizationHome() {
               width="345"
               image={event2}
               alt="Event 1"
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: "cover" }}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -205,18 +210,16 @@ export default function OrganizationHome() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-          <Button size="small" color="primary">
+            <Button sx={{ bgcolor: "	#ffdead" }} size="small" color="primary">
               View Attendance
             </Button>
             <Button size="small" color="primary">
               Options
             </Button>
-           
           </CardActions>
         </Card>
 
-
-        <Card sx={{ maxWidth: 345, margin: "0 10px" }}>
+        <Card sx={{ maxWidth: 345, margin: "0 10px", bgcolor: "#fffacd" }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -224,7 +227,7 @@ export default function OrganizationHome() {
               width="345"
               image={event2}
               alt="Event 2"
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: "cover" }}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -236,22 +239,15 @@ export default function OrganizationHome() {
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button sx={{ bgcolor: "	#ffdead" }} size="small" color="primary">
               View Attendance
             </Button>
             <Button size="small" color="primary">
               Options
             </Button>
-           
           </CardActions>
         </Card>
       </div>
-
-      
-
-
-
-
 
       <Modal
         open={isSignupModalOpen}
@@ -261,10 +257,22 @@ export default function OrganizationHome() {
       >
         <Box sx={{ ...style, width: 400 }}>
           <h2 id="signup-modal-title">Create Event</h2>
-          <TextField label="Event Name" id="eventname" variant="outlined" margin="normal" fullWidth />
-          <TextField label="Description" id="desc" type="outlined" variant="outlined" margin="normal" fullWidth />
+          <TextField
+            label="Event Name"
+            id="eventname"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
+          <TextField
+            label="Description"
+            id="desc"
+            type="outlined"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
 
-        
           <Autocomplete
             disablePortal
             id="combo-box-demo"
@@ -281,37 +289,39 @@ export default function OrganizationHome() {
           />
 
           <TextField
-          id="standard-helperText"
-          type="datetime-local"
-          defaultValue=""
-          helperText="Event Start"
-          variant="standard"
-          margin="normal"
+            id="standard-helperText"
+            type="datetime-local"
+            defaultValue=""
+            helperText="Event Start"
+            variant="standard"
+            margin="normal"
             fullWidth
-        />
-          <br/>
-          
+          />
+          <br />
+
           <TextField
-          id="standard-helperText"
-          type="datetime-local"
-          defaultValue=""
-          helperText="Event End"
-          variant="standard"
-          margin="normal"
+            id="standard-helperText"
+            type="datetime-local"
+            defaultValue=""
+            helperText="Event End"
+            variant="standard"
+            margin="normal"
             fullWidth
-        />
-         
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2}}>
-            <Button variant="contained" >
+          />
+
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+            <Button sx={{ bgcolor: "#f0e68c" }} variant="contained">
               Create Event
             </Button>
-            <Button onClick={closeSignupModal} sx={{ ml: 1 }}>
+            <Button
+              onClick={closeSignupModal}
+              sx={{ ml: 1, bgcolor: "#f0e68c" }}
+            >
               Close
             </Button>
           </Box>
         </Box>
       </Modal>
-
 
       <Modal
         open={isYearModalOpen}
@@ -321,41 +331,42 @@ export default function OrganizationHome() {
       >
         <Box sx={{ ...yearModalStyle, width: 300 }}>
           <h2 id="year-modal-title">See Event</h2>
-          <TextField label="Name" id="year" variant="outlined" margin="normal" fullWidth />
+          <TextField
+            label="Name"
+            id="year"
+            variant="outlined"
+            margin="normal"
+            fullWidth
+          />
           <Autocomplete
             disablePortal
             id="combo-box-demo"
             options={departments}
             sx={{ width: 235 }}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Department"
-              
-              />
+              <TextField {...params} label="Department" />
             )}
           />
 
+          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+            <Button variant="contained" onClick={closeYearModal}>
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => {
+                closeYearModal();
+                handleSnackbarOpen();
 
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-          <Button variant="contained" onClick={closeYearModal}>
-            Cancel
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              closeYearModal();
-              handleSnackbarOpen();
-
-              setTimeout(() => {
-                navigate("/joined");
-              }, 1500);
-            }}
-            sx={{ ml: 1 }}
-          >
-            Confirm
-          </Button>
-        </Box>
+                setTimeout(() => {
+                  navigate("/joined");
+                }, 1500);
+              }}
+              sx={{ ml: 1 }}
+            >
+              Confirm
+            </Button>
+          </Box>
         </Box>
       </Modal>
       <Snackbar
@@ -376,8 +387,8 @@ export default function OrganizationHome() {
           </React.Fragment>
         }
       />
-
-
+      <br />
+      <br />
     </div>
   );
 }
