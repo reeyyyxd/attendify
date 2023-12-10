@@ -134,27 +134,26 @@ export default function AdminUnlock() {
         </div>
 
         <div className="w-1/6">
-          <Button variant="contained" type="submit" sx={{ ml: "auto", bgcolor: "#F0E68C" }}>
+          <Button variant="contained" type="submit" sx={{ ml: "auto", bgcolor: "#008080" }}>
             Update
           </Button>
         </div>
 
         <div className="w-1/6">
           {/* Use Link component and onClick handler to navigate */}
-          <Link to="/verification" variant="contained" sx={{ ml: "auto", bgcolor: "#F0E68C" }}>
+          <Link to="/verification" variant="contained" sx={{ ml: "auto" }}>
             Cancel
           </Link>
         </div>
       </form>
-
       <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle>Confirm Update</DialogTitle>
-        <DialogContent>
+        <DialogTitle  sx={{bgcolor: "	#ffdead"}}>Confirm Update</DialogTitle>
+        <DialogContent sx={{bgcolor: "	#ffdead"}}>
           <DialogContentText>Are you sure you want to update the user data?</DialogContentText>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{bgcolor: "	#ffdead"}}>
           <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button onClick={updateUserData} autoFocus>
+          <Button sx={{bgcolor: "#00ced1"}}  onClick={updateUserData} autoFocus>
             Confirm
           </Button>
         </DialogActions>

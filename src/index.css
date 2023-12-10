@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.height--ellipse{
+    height: 82.4vh;
+    margin-top: 20px;
+}
+
+.margin--header{
+    margin-left: -290px;
+    margin-top: 150px;
+    width: 390px;
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.icon--pic{
+    width: 700px;
+    height: 450px;
+    margin-right: 250px;
+    margin-left: 300px;
+    margin-top: 78px;
+}

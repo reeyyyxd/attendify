@@ -60,12 +60,13 @@ export default function NoRole() {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'background.paper',
+    bgcolor: '#fff8dc',
     border: '2px solid #000',
     boxShadow: 24,
     pt: 2,
     px: 4,
     pb: 3,
+    borderRadius: "15px",
   };
 
   const yearModalStyle = {
@@ -156,8 +157,8 @@ export default function NoRole() {
           onChange={(e)=>setPassword(e.target.change)}
           />
 
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-        <Button variant="contained" onClick={(e) => handleClick(e)}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2,  }}>
+        <Button sx={{bgcolor: "	#008080"}} variant="contained" onClick={(e) => handleClick(e)}>
             Update
         </Button>
         <Button onClick={closeSignupModal} sx={{ ml: 1 }}>

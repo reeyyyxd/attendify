@@ -16,6 +16,7 @@ import EmployeeLogin from "./EmployeeLogin";
 import NoRole from "./NoRole";
 import AdminRole from "./AdminRole";
 import AdminUnlock from "./AdminUnlock";
+import Front from "./Front";
 
 
 
@@ -39,6 +40,9 @@ export default function App() {
         <Route path="/norole" element={<NoRole/>}/>
         <Route path="/role/:id" element={<AdminRole />} />
         <Route path="/unlock/:id" element={<AdminUnlock/>}/>
+        <Route path="/front" element={<Front/>}/>
+
+
         
  
       </Routes>

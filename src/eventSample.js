@@ -49,14 +49,14 @@ export default function IndexStudent() {
       <br/>
 
       <div className="flex justify-center items-center">
-        <Card sx={{ maxWidth: 500, margin: "20 10px" }}>
+        <Card sx={{ maxWidth: 500, margin: "20 10px", bgcolor:"#fffacd"}}> 
           <CardActionArea>
             <CardMedia
               component="img"
               height={2} // Adjust the height as needed
               image={proofImage ? URL.createObjectURL(proofImage) : event2}
               alt="Event 1"
-              sx={{ objectFit: 'cover' }}
+              sx={{ objectFit: 'cover'}}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -76,14 +76,14 @@ export default function IndexStudent() {
           <CardActions>
 
 
-          <Button size="small" color="primary">
+          <Button sx={{bgcolor: "	#ffdead"}} size="small" color="primary">
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 Upload Proof of Attendance
               </div>
             </Button>
 
-            <Button size="small" color="primary" onClick={handleMenuClick}>
+            <Button sx={{bgcolor: "	#ffdead"}} size="small" color="primary" onClick={handleMenuClick}>
               Options
             </Button>
             <Menu
