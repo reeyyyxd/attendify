@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams} from "react-router-dom";
+import axios from "axios"; // Import axios
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -28,11 +29,17 @@ export default function AdminVerification() {
 
   }, []);
 
-  const deleteUser = async (id) => {
-    await axios.delete('http://localhost:8080/user/${id}')
-    loadUsers()
-}
+  const loadUsers = () => {
+    // Fetch users again and update the state
+    fetch("http://localhost:8080/user/seeAllUsers")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  };
 
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:8080/user/${id}`);
+    loadUsers(); // Assuming you have a function named loadUsers to reload the user data
+  };
   return (
     <div className="h-screen w-full bg-orange-100">
       <nav className="bg-teal-950">
@@ -114,9 +121,9 @@ export default function AdminVerification() {
                     Update
                   </Link>
 
-                  <Link onClick={()=>deleteuser(user)} to={`/lock/${student.id}`}>
-                  Delete
-                </Link>
+                  <Link onClick={() => deleteUser(user.id)} to={`/lock/${user.id}`}>
+                   Delete
+                  </Link>
                 
                 </TableCell>
                 </TableRow>
